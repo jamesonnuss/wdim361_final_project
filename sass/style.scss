@@ -1,0 +1,133 @@
+@import "compass/css3";
+@import "variables";
+@import "http://fonts.googleapis.com/css?family=Montserrat:400,700";
+@import "http://fonts.googleapis.com/css?family=Open+Sans:600italic,700italic,400,600,700,800,300";
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf') format('truetype'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+body{
+	background-color:#868684;
+	font-family: 'Open Sans', sans-serif;
+	min-width:768px;
+}
+header{
+	width:100%;
+	background-color: #c2c0c0;
+@include filter-gradient(#c2c0c0, #ffffff, vertical); // IE6-9
+@include background-image(linear-gradient(top, #c2c0c0 0%,#ffffff 100%));
+position:relative;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Montserrat', sans-serif;
+}
+a{
+	color:#111111;
+	&:hover{
+		color:$mainColor;
+	}
+}
+h1.logo{
+	text-align: center;
+	text-transform:uppercase;
+	font-style:italic;
+}
+span.silver{
+	color:#858583;
+	font-family: 'Open Sans', sans-serif;
+}
+span.screen{
+	color:#719d46;
+	font-family: 'Open Sans', sans-serif;
+}
+.icon-menu:before {
+	content: "\e600";
+	font-size:32px;
+	color:#868684;
+	position:relative;
+	top:22px;
+}
+.sidr ul li.active>a, .sidr ul li.active>span, .sidr ul li.sidr-class-active>a, .sidr ul li.sidr-class-active>span {
+	color: $mainColor;
+}
+.sidr ul li a, .sidr ul li span {
+	font-weight:300;
+	font-family: 'Open Sans', sans-serif;
+}
+.headerTopPage{
+	margin-top:50px;
+}
+.pageHeader{
+	color:$headerColor;
+	text-decoration:underline;
+}
+
+
+li{
+	text-align:center;
+}
+ul.all_films {
+	a img{
+		&:hover{
+				border:4px solid $mainColor;
+				color:$mainColor;
+		}
+	}
+	.title{
+		color:#fff;
+		&:hover{
+			color:$mainColor;
+		}
+	}
+}
+
+.film_detail_header{
+	float:right;
+}
+
+img.image_detail_page{
+	float:left;
+	&:hover{
+		border:4px solid $mainColor;
+		color:$mainColor;
+		}
+}
+
+.detail_page{
+	margin-top:100px;
+}
+
+.information_detail_page{
+	position:absolute;
+	margin-top:50px;
+	margin-left:475px;
+	
+	.description_film_detail_page{
+		line-height:30px;
+	}
+}
+table{
+	width:100%;
+}
+table tr td{
+	border-bottom:1px solid #ccc;
+}
