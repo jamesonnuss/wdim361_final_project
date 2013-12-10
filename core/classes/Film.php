@@ -39,9 +39,9 @@ class Film
 			$errors['RunningTime'] = 'Please enter a Running Time.';
 		if(empty($_POST['ReleaseDate']))
 			$errors['ReleaseDate'] = 'Please enter a Release Date.';
-		if(!is_numeric($_POST['GenreID']))
+		if(empty($_POST['GenreID']))
 			$errors['GenreID'] = 'Please enter a GenreID.';
-		if(!is_numeric($_POST['DirectorID']))
+		if(empty($_POST['DirectorID']))
 			$errors['DirectorID'] = 'Please enter a DirectorID.';	
 		$img_array = array();
 		if(!empty($_FILES['image']['name'])) { 
