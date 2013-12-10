@@ -13,7 +13,7 @@ include '_settings.php';
         <option value = "0" selected="selected">Sort By....</option>
         <option value = "1">Alphabetically</option>
         <option value = "2">Release Date</option>
-    </select>  
+    </select>
 </form>
   </div>
 </div><!--End Div Class headerTopPage-->
@@ -37,13 +37,13 @@ include '_settings.php';
         while ($row = $result->fetch_array())
         {
             print '<li><a href="film_detail.php?id='.$row['FilmID'].'"><img src="img/'.$row['Image'].'" alt="" />'.'<div class="title">'.$row['Title'].'</div></a></li>';
-        }  
+        }
     } else {
         $result = $mysqli->query('SELECT * FROM film');
         while ($row = $result->fetch_array())
         {
             print '<li><a href="film_detail.php?id='.$row['FilmID'].'"><img src="img/'.$row['Image'].'" alt="" />'.'<div class="title">'.$row['Title'].'</div></a></li>';
-        }        
+        }
     }
   ?>
 </ul>

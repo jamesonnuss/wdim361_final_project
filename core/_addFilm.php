@@ -21,6 +21,7 @@ if(!empty($_GET['FilmID'])){
 	$film->get_film($_GET['FilmID']);
 }
 $action = 'Add Film';
+$film->get_options();
 if(!empty($film->Title)){
 	$action = 'Update Film';
 }

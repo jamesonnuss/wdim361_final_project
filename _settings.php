@@ -10,7 +10,7 @@ define('IMG_DIR', SITE_DIR.'/img/');
 //mysqli stands for mysql improved
 //params = dbhost, user, pswd, db
 global $mysqli;
-$mysqli = new mysqli('localhost','root','','silverscreen');
+$mysqli = new mysqli('localhost','movieWatcher','d6Zvjm8z5ub38Zdr','silverscreen');
 
 //check the connection
 if(mysqli_connect_errno()){

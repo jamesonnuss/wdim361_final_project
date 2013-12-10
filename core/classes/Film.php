@@ -10,37 +10,42 @@ class Film
 	public $GenreID = '';
 	public $DirectorID = '';
 
+	public function get_options() {
+		global $mysqli;
+		$genres = array();
+    $genreResult = $mysqli->query("SELECT * FROM genre");
+    while ($genreRow = $genreResult->fetch_array())
+    {
+    	$genres[$genreRow['GenreID']] = $genreRow['Name'];
+    }
+    $this->genres = $genres;
+
+    $directors = array();
+    $directorResult = $mysqli->query("SELECT * FROM director");
+    while ($directorRow = $directorResult->fetch_array())
+    {
+    	$directors[$directorRow['DirectorID']] = $directorRow['FirstName'] .' '. $directorRow['LastName'];
+    }
+    $this->directors = $directors;
+	}
+
 	//given a valid id, Query the DB & populate the cupcake object
 	public function get_film($id){
-	    global $mysqli;
-	    $result = $mysqli->query("SELECT * FROM film WHERE FilmID = $id");
-	    while ($row = $result->fetch_array())
-	    {
-	    	$this->FilmID = $row['FilmID'];
-	    	$this->Title = $row['Title'];
-	    	$this->Description = $row['Description'];
-	    	$this->Image = $row['Image'];
-	    	$this->RunningTime = $row['RunningTime'];
-	    	$this->ReleaseDate = $row['ReleaseDate'];
-	    	$this->GenreID = $row['GenreID'];
-	    	$this->DirectorID = $row['DirectorID'];
-	    }
-
-	    $genres = array();
-	    $genreResult = $mysqli->query("SELECT * FROM genre");
-	    while ($genreRow = $genreResult->fetch_array())
-	    {
-	    	$genres[$genreRow['GenreID']] = $genreRow['Name'];
-	    }
-	    $this->genres = $genres;
-
-	    $directors = array();
-	    $directorResult = $mysqli->query("SELECT * FROM director");
-	    while ($directorRow = $directorResult->fetch_array())
-	    {
-	    	$directors[$directorRow['DirectorID']] = $directorRow['FirstName'] .' '. $directorRow['LastName'];
-	    }
-	    $this->directors = $directors;
+		global $mysqli;
+    $result = $mysqli->query("SELECT * FROM film INNER JOIN genre ON film.GenreID = genre.GenreID INNER JOIN director ON film.DirectorID = director.DirectorID WHERE FilmID = $id");
+    while ($row = $result->fetch_array())
+    {
+    	$this->FilmID = $row['FilmID'];
+    	$this->Title = $row['Title'];
+    	$this->Description = $row['Description'];
+    	$this->Image = $row['Image'];
+    	$this->RunningTime = $row['RunningTime'];
+    	$this->ReleaseDate = $row['ReleaseDate'];
+    	$this->GenreID = $row['GenreID'];
+    	$this->GenreName = $row['Name'];
+    	$this->DirectorID = $row['DirectorID'];
+			$this->DirectorName = $row['FirstName'] .' '. $row['LastName'];
+    }
 	}
 
 	//expects a form $_POST
