@@ -13,15 +13,15 @@
   <script src="/wdim361_final_projectCopy/js/jquery.sidr.min.js"></script>
   <script src="/wdim361_final_projectCopy/js/vendor/custom.modernizr.js"></script>
 
-<?php if(!empty($header_extras)){ 
-		print $header_extras; 
+<?php if(!empty($header_extras)){
+		print $header_extras;
 	  }
 ?>
 </head>
 <body>
 <header>
 	<div class="row">
-		<div class="large-12 columns">		
+		<div class="large-12 columns">
 			<div class="large-1 columns"><a id="demo" href="#sidr"><span class="icon-menu"></a>
 			</div>
 			<div class="large-11 columns">
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 </header>
-	<div id="sidr"> 
+	<div id="sidr">
 		<ul>
 			<li class="active"><a href="index.php">Film Library</a></li>
 			<li><a href="#">Recently Watched</a></li>
