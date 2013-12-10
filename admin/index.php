@@ -20,7 +20,7 @@ include '../_settings.php';
 	</tr>
 
 <?php
-$result = $mysqli->query('SELECT * FROM film');
+$result = $mysqli->query('SELECT concat(director.FirstName," ", director.LastName) as directorName, genre.Name AS Genre, film.FilmID, film.Title, film.Description, film.RunningTime, film.ReleaseDate, film.Image FROM genre LEFT JOIN film ON film.GenreID = genre.GenreID LEFT JOIN director on film.DirectorID = director.DirectorID WHERE film.Title IS NOT NULL ORDER BY genre.Name ASC');
 while ($row = $result->fetch_array())
 {
 	print '<tr>';
@@ -29,8 +29,8 @@ while ($row = $result->fetch_array())
 	print '<td>'.$row['RunningTime'].'</td>';
 	print '<td>'.date($row['ReleaseDate']).'</td>';
 	print '<td>'.$row['Description'].'</td>';
-	print '<td>'.$row['GenreID'].'</td>';
-	print '<td>'.$row['DirectorID'].'</td>';
+	print '<td>'.$row['Genre'].'</td>';
+	print '<td>'.$row['directorName'].'</td>';
 	print '<td><a href="addFilm.php?FilmID='.$row['FilmID'].'">Edit</a> | <a href="deleteFilm.php?FilmID='.$row['FilmID'].'">Delete</a></td>';
 	print '</tr>';
 }
