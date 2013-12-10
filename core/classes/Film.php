@@ -11,20 +11,20 @@ class Film
 	public $DirectorID = ''; 
 	
 	//given a valid id, Query the DB & populate the cupcake object
-	public function get_film($id){ 
-		global $mysqli; 
-		$result = $mysqli->query("SELECT * FROM film WHERE FilmID = $id");
-		while ($row = $result->fetch_array())
-		{
-			$this->FilmID = $row['FilmID']; 
-			$this->Title = $row['Title']; 
-			$this->Description = $row['Description']; 
-			$this->Image = $row['Image']; 
-			$this->RunningTime = $row['RunningTime']; 
-			$this->ReleaseDate = $row['ReleaseDate']; 
-			$this->GenreID = $row['GenreID']; 
-			$this->DirectorID = $row['DirectorID']; 
-		}
+	public function get_film($id){
+	    global $mysqli;
+	    $result = $mysqli->query("SELECT * FROM film INNER JOIN genre ON film.GenreID = genre.GenreID INNER JOIN director ON film.DirectorID = director.DirectorID WHERE FilmID = $id");
+	    while ($row = $result->fetch_array())
+	    {
+	    	$this->FilmID = $row['FilmID'];
+	    	$this->Title = $row['Title'];
+	    	$this->Description = $row['Description'];
+	    	$this->Image = $row['Image'];
+	    	$this->RunningTime = $row['RunningTime'];
+	    	$this->ReleaseDate = $row['ReleaseDate'];
+	    	$this->GenreID = $row['Name'];
+	    	$this->DirectorID = $row['FirstName'] .' '. $row['LastName'];
+	    }
 	}
 	
 	//expects a form $_POST
@@ -90,7 +90,7 @@ class Film
 					GenreID = $GenreID,
 					DirectorID = $DirectorID,
 					Image = '$img'
-					WHERE ID = $id";
+					WHERE FilmID = $id";
 			}
 			$result = $mysqli->query($SQL);
 			return $result; 
